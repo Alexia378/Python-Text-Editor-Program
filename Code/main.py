@@ -29,6 +29,11 @@ def change_color():
     color = colorchooser.askcolor(title="pick a color ... or else")
     text_area.config(fg=color[1])
 
+# function changes background color
+def change_background():
+    color = colorchooser.askcolor(title="choose a color for background")
+    text_area.configure(background=color[1])
+
 # function opens file. After clicking on the label "Open"
 # another window is opening and
 # that's where user can choose a file
@@ -49,9 +54,13 @@ def open_file():
     finally:
         file.close()
 
+
+# function creates new file with the name "Untitled"
 def new_file():
     window.title("Untitled")
     text_area.delete(1.0, END)
+
+# function saves file into given directory
 
 def save_file():
     file = filedialog.asksaveasfile(initialfile='untitled.txt',
@@ -112,8 +121,11 @@ text_area.config(yscrollcommand=scroll_bar.set)
 frame = Frame(window)
 frame.grid()
 
-color_button = Button(frame, text="color", command=change_color)
+color_button = Button(frame, text="text color", command=change_color)
 color_button.grid(row=0, column=0)
+
+background_button = Button(frame, text="Background color", command=change_background)
+background_button.grid(row=0, column=3)
 
 font_box = OptionMenu(frame, font_name, *font.families(), command=change_font)
 font_box.grid(row=0, column=1)
