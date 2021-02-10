@@ -4,25 +4,35 @@ from tkinter import filedialog, colorchooser, font
 from tkinter.messagebox import *
 from tkinter.filedialog import *
 
+# function gives an information about program
 def about():
-    showinfo("About this program", "This is a program written by mĒ")
+    showinfo("About this program", "At this point of time this is version 1.0")
 
+# function represents "cut" operation with documents
 def cut():
     text_area.event_generate("<<Cut>>")
 
+# function represents "copy" operation with documents
 def copy():
     text_area.event_generate("<<Copy>>")
 
+# function represents "paste" operation with documents
 def paste():
     text_area.event_generate("<<Paste>>")
 
+# function changes font of the text so that when user chooses another font, the whole text transforms
 def change_font(*args):
     text_area.config(font=(font_name.get(), size_box.get()))
 
+# function changes color of the text so that when user chooses another color, the whole text transforms
 def change_color():
     color = colorchooser.askcolor(title="pick a color ... or else")
     text_area.config(fg=color[1])
 
+# function opens file. After clicking on the label "Open"
+# another window is opening and
+# that's where user can choose a file
+# to open
 def open_file():
     file = askopenfilename(defaultextension=".txt", file=[("All Files", "*.*"), ("Text Documents", "*.txt")])
     try:
